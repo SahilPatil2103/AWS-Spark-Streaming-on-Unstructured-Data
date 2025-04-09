@@ -1,6 +1,5 @@
 import re
 from datetime import datetime
-from pyspark.sql.types import ArrayType, StringType
 
 def split_job_postings(file_content):
     """Splits multi-job file into individual postings"""
