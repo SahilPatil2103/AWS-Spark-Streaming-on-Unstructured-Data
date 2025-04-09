@@ -12,7 +12,7 @@ Unstructured data, such as job descriptions, requirements, and qualifications, i
 ---
 
 ## 2. Architecture Diagram
-![Architecture Diagram](https://drive.google.com/file/d/1p7uEP9MqPqE566GEJh_AoQYk7NV8oqUF/view?usp=drive_link)
+![Architecture Diagram](https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-Data/blob/main/Architecture%20Diagram.png)
 
 
 ---
@@ -20,9 +20,9 @@ Unstructured data, such as job descriptions, requirements, and qualifications, i
 ## 3. Technologies Used
 | **Category**           | **Tools/Technologies**                          |
 |-------------------------|------------------------------------------------|
-| **Programming Language** | Python 3.9, Java 11                                  |
-| **Big Data Tools**       | Apache Spark (PySpark), Docker for containerization |
-| **AWS Services**         | S3 for data storage, IAM for authentication, Glue Crawler, Athenna   |
+| **Programming Language** | Python 3.9, Java 11                           |
+| **Big Data Tools**       | Apache Spark (PySpark), Docker |
+| **AWS Services**         | S3, IAM, Glue Crawler, Athenna  |
 | **Infrastructure**       | Docker Compose, Bitnami Spark Image           |
 
 ---
