@@ -34,6 +34,8 @@ git clone https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-
 ![S3 main](https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-Data/blob/main/Images/S3%20main.png)
 
 ### 2.2 Update config.py
+Use the provided config.py script [Config File](Jobs/Config/config.py).
+
 jobs/config/config.py
 ```
 configuration = {
@@ -43,9 +45,9 @@ configuration = {
 'REGION': 'us-east-1'
 }
 ```
-Use the provided config.py script [Config File](Jobs/Config/config.py).
 
 ## Step 3: Build Docker Image
+Use the provided Docker script [Docker File](Docker/DockerFile).
 ### 3.1 Dockerfile Setup
 docker/Dockerfile
 ```
@@ -57,6 +59,7 @@ USER 1001
 ```
 
 ### 3.2 Build Image
+Use the provided docker-compose.yml script [Docker-compose File](Docker/docker-compose.yml).
 ```
 docker-compose -f docker/docker-compose.yml build
 ```
@@ -90,6 +93,11 @@ spark-worker-1 Up 8081/tcp
 - Place `JobPostings.json` in `input/input_json/`
 
 ### 5.2 Validate Paths in main.py
+Use the provided main.py.py and udf_utils.py scripts.
+
+- [Main.py File](Jobs/main.py)
+- [Udf_utils File](Jobs/udf_utils.py)
+  
 ```
 text_input_dir = 'file:///jobs/input/input_text/'
 json_input_dir = 'file:///jobs/input/input_json/'
@@ -121,6 +129,10 @@ docker exec spark-master /opt/bitnami/spark/bin/spark-submit
 
 ### 8.2 Verify Results in Athenna
 ![Athenna](https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-Data/blob/main/Images/Athenna%20result.png)
+
+Verify Athenna Result.
+
+- [Athenna csv](https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-Data/blob/main/Datasets/Athenna%20Output.csv)
 
 ### Step 9: Stop Cluster
 ```
