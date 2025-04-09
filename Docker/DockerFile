@@ -1,31 +1,24 @@
-# Use a base image with Java 11
-FROM openjdk:11-jdk-slim
+# Use official Bitnami Spark image
+FROM bitnami/spark:3.5.5
 
-# Install Python 3.9.6
-RUN apt-get update && \
-    apt-get install -y wget build-essential zlib1g-dev libssl-dev libncurses-dev libffi-dev libsqlite3-dev && \
-    wget https://www.python.org/ftp/python/3.9.6/Python-3.9.6.tgz && \
-    tar xzf Python-3.9.6.tgz && \
-    cd Python-3.9.6 && \
-    ./configure --enable-optimizations && \
-    make altinstall && \
-    cd .. && \
-    rm -rf Python-3.9.6 Python-3.9.6.tgz
+# Switch to root for package installation
+USER root
 
-# Install Apache Spark
-ENV SPARK_VERSION=3.5.5
-ENV HADOOP_VERSION=3
-RUN wget https://downloads.apache.org/spark/spark-$SPARK_VERSION/spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION.tgz && \
-    tar xzf spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION.tgz -C /opt && \
-    rm spark-$SPARK_VERSION-bin-hadoop$HADOOP_VERSION.tgz
-ENV SPARK_HOME=/opt/spark-3.5.5-bin-hadoop3
-ENV PATH=$SPARK_HOME/bin:$PATH
+# Install Python dependencies
+RUN pip install --no-cache-dir pyspark==3.5.5 boto3 pandas
 
-# Verify Spark installation
-RUN ls -l $SPARK_HOME/bin
+# Configure environment variables
+ENV SPARK_HOME="/opt/bitnami/spark" \
+    PATH="/opt/bitnami/spark/bin:$PATH" \
+    PYTHONPATH="/opt/bitnami/spark/python:/opt/bitnami/spark/python/lib/py4j-0.10.9.7-src.zip"
 
-# Set the working directory
-WORKDIR /opt/bitnami/spark
+# Create application directories
+RUN mkdir -p /jobs /input && \
+    chown -R 1001:1001 /jobs /input && \
+    chmod -R 775 /jobs /input
 
-# Copy jobs directory
-COPY ./jobs /opt/bitnami/spark/jobs
+# Switch back to non-root user
+USER 1001
+
+# Set working directory
+WORKDIR /jobs
