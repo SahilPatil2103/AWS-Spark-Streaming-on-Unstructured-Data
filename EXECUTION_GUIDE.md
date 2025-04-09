@@ -43,6 +43,7 @@ configuration = {
 'REGION': 'us-east-1'
 }
 ```
+Use the provided config.py script [Config File](Jobs/Config/config.py).
 
 ## Step 3: Build Docker Image
 ### 3.1 Dockerfile Setup
