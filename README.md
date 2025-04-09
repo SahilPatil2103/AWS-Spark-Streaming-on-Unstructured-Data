@@ -12,7 +12,7 @@ Unstructured data, such as job descriptions, requirements, and qualifications, i
 ---
 
 ## 2. Architecture Diagram
-![Architecture Diagram](images/architecture.png)
+![Architecture Diagram]([Architecture Diagram.png](https://drive.google.com/file/d/1p7uEP9MqPqE566GEJh_AoQYk7NV8oqUF/view?usp=sharing))
 
 
 ---
@@ -20,9 +20,9 @@ Unstructured data, such as job descriptions, requirements, and qualifications, i
 ## 3. Technologies Used
 | **Category**           | **Tools/Technologies**                          |
 |-------------------------|------------------------------------------------|
-| **Programming Language** | Python 3.9                                    |
+| **Programming Language** | Python 3.9, Java 11                                  |
 | **Big Data Tools**       | Apache Spark (PySpark), Docker for containerization |
-| **AWS Services**         | S3 for data storage, IAM for authentication   |
+| **AWS Services**         | S3 for data storage, IAM for authentication, Glue Crawler, Athenna   |
 | **Infrastructure**       | Docker Compose, Bitnami Spark Image           |
 
 ---
@@ -36,5 +36,3 @@ For detailed step-by-step instructions on setting up and executing this project,
 The project uses sample datasets for job postings:
 - [Sample Text Job Postings](data/input_text/ACCOUNTING-CLERK.txt)
 - [Sample JSON Job Data](data/input_json/JobPostings.json)
-
-These datasets are located in the `/data` folder of the repository.
