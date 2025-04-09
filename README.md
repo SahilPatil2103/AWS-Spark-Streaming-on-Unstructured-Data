@@ -12,7 +12,7 @@ Unstructured data, such as job descriptions, requirements, and qualifications, i
 ---
 
 ## 2. Architecture Diagram
-![Architecture Diagram]([Architecture Diagram.png](https://drive.google.com/file/d/1p7uEP9MqPqE566GEJh_AoQYk7NV8oqUF/view?usp=sharing))
+![Architecture Diagram](https://drive.google.com/file/d/1p7uEP9MqPqE566GEJh_AoQYk7NV8oqUF/view?usp=drive_link)
 
 
 ---
