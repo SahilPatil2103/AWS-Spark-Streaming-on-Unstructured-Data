@@ -34,5 +34,5 @@ For detailed step-by-step instructions on setting up and executing this project,
 
 ## 5. Datasets
 The project uses sample datasets for job postings:
-- [Sample Text Job Postings](data/input_text/ACCOUNTING-CLERK.txt)
-- [Sample JSON Job Data](data/input_json/JobPostings.json)
+- [ACCOUNTING CLERK.txt](https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-Data/blob/main/Datasets/ACCOUNTING%20CLERK.txt)
+- [JobPostings.json](https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-Data/blob/main/Datasets/JobPostings.json)
