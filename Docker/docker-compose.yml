@@ -1,46 +1,34 @@
-x-spark-common: &spark-common
-  build:
-    context: .
-    dockerfile: Dockerfile
-  volumes:
-    - ./jobs:/opt/bitnami/spark/jobs
-  environment:
-    SPARK_MODE: Worker
-    SPARK_WORKER_CORES: 2
-    SPARK_WORKER_MEMORY: 1g
-    SPARK_MASTER_URL: spark://spark-master:7077
-  networks:
-    - datamasterylab
-
 services:
   spark-master:
-    <<: *spark-common
-    command: /bin/sh -c "$SPARK_HOME/bin/spark-class org.apache.spark.deploy.master.Master"
+    build: .
+    hostname: spark-master
+    container_name: spark-master
     ports:
-      - "9092:8080"
-      - "7077:7077"
+      - "9092:8080"  # Spark UI
+      - "7077:7077"  # Master URL
+    environment:
+      - SPARK_MODE=master
+    volumes:
+      - ./jobs:/jobs  # Mount jobs directory
+      - ./jobs/input:/jobs/input  # Mount input directory
+    networks:
+      - spark-network
 
-  spark-worker-1:
-    <<: *spark-common
-    command: /bin/sh -c "$SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077"
-
-  spark-worker-2:
-    <<: *spark-common
-    command: /bin/sh -c "$SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077"
-
-  spark-worker-3:
-    <<: *spark-common
-    command: /bin/sh -c "$SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077"
-
-  spark-worker-4:
-    <<: *spark-common
-    command: /bin/sh -c "$SPARK_HOME/bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077"
-
-  spark-submit:
-    <<: *spark-common
-    command: /bin/sh -c "$SPARK_HOME/bin/spark-submit /opt/bitnami/spark/jobs/main.py"
+  spark-worker:
+    build: .
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-master:7077
+      - SPARK_WORKER_CORES=2
+      - SPARK_WORKER_MEMORY=2g
     depends_on:
       - spark-master
+    volumes:
+      - ./jobs:/jobs  # Mount jobs directory
+      - ./jobs/input:/jobs/input  # Mount input directory
+    networks:
+      - spark-network
 
 networks:
-  datamasterylab:
+  spark-network:
+    driver: bridge
