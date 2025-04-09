@@ -12,7 +12,8 @@ Unstructured data, such as job descriptions, requirements, and qualifications, i
 ---
 
 ## 2. Architecture Diagram
-![Architecture Diagram](https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-Data/blob/main/Architecture%20Diagram.png)
+![Architecture Diagram](https://github.com/SahilPatil2103/AWS-Spark-Streaming-on-Unstructured-Data/blob/main/Images/Architecture%20Diagram.png)
+
 
 
 ---
